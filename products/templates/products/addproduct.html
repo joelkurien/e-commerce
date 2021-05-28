@@ -1,0 +1,17 @@
+{% extends 'products/layout.html' %}
+
+{% block title %}
+  Add Product
+{% endblock %}
+
+{% block content %}
+  <form action="{% url 'addproduct' %}" method="post">
+    {% csrf_token %}
+    <p><input type="text" name="productName" placeholder="Product Name" required></p>
+    <p><input type="text" name="companyName" placeholder="Company Name" required></p>
+    <p><input type="text" name="imageUrl" placeholder="Image Url" required></p>
+    <p><input type="text" name="description" placeholder="description"></p>
+    <button type="submit" name="button">Add</button>
+  </form>
+  <a href="{% url 'product' %}">Products Page</a>
+{% endblock %}

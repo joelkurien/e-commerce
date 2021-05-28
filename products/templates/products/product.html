@@ -1,0 +1,15 @@
+{% extends 'products/layout.html' %}
+
+{% block title %}
+  Products
+{% endblock %}
+
+{% block content %}
+  {% for product in products %}
+    <p>Product Name: {{ product.productName }}</p>
+    <p>Company Name: {{ product.companyName }}</p>
+    <p>Product Image: {{ product.imageUrl }}</p>
+    <p>Product Description: {{ product.description }}</p>
+  {% endfor %}
+  <a href="{% url 'addproduct' %}">Add a new product</a>
+{% endblock %}
