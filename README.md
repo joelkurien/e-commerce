@@ -12,4 +12,4 @@ Technologies learning in the process of making this application:
 * Django models and migrations
 * HTML, CSS with Django templates
 * CI using Github Actions
-* Continous Delivery using Dockerfiles
+* Continuous Delivery using Dockerfiles
