@@ -6,10 +6,16 @@
 
 {% block content %}
   {% for product in products %}
-    <p>Product Name: {{ product.productName }}</p>
-    <p>Company Name: {{ product.companyName }}</p>
-    <p>Product Image: {{ product.imageUrl }}</p>
-    <p>Product Description: {{ product.description }}</p>
+    <form action="{% url 'index' %}" method='post'>
+      {% csrf_token %}
+      <input type="hidden" name="checkoutId" value="{{ product.id }}">
+      <p>Product Name: {{ product.productName }}</p>
+      <p>Company Name: {{ product.companyName }}</p>
+      <p>Product Image: {{ product.imageUrl }}</p>
+      <p>Product Description: {{ product.description }}</p>
+      <button type="submit" name="button">Add Product</button>
+    </form>
+
   {% endfor %}
   <a href="{% url 'addproduct' %}">Add a new product</a>
 {% endblock %}
