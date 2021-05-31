@@ -56,6 +56,17 @@ def user_login(request):
     return render(request, 'products/login.html')
 
 def user_page(request, id):
-    return render(request, 'products/product.html', {
-        'products': Product.objects.all()
+    if request.method == 'POST':
+        if User.objects.filter(pk=id).exists():
+            User.objects.get(pk=id).userProducts.add(Product.objects.get(pk=request.POST['productID']))
+
+    return render(request, 'products/user_product.html', {
+        'products': Product.objects.all(),
+        'user': User.objects.get(pk=id)
+    })
+
+def user_cart(request, id):
+    return render(request, 'products/checkout.html', {
+        'checkout': User.objects.get(pk=id).userProducts.all(),
+        'user': User.objects.get(pk=id)
     })

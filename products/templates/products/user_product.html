@@ -1,0 +1,21 @@
+{% extends 'products/layout.html' %}
+
+{% block title %}
+  Products
+{% endblock %}
+
+{% block content %}
+  <h1>Hey, {{ user.userName }}</h1>
+  {% for product in products %}
+    <form action="{% url 'userpage' user.id %}" method='post'>
+      {% csrf_token %}
+      <input hidden type="text" name="productID" value="{{ product.id }}">
+      <p>Product Name: {{ product.productName }}</p>
+      <p>Company Name: {{ product.companyName }}</p>
+      <p>Product Image: {{ product.imageUrl }}</p>
+      <p>Product Description: {{ product.description }}</p>
+      <button type="submit">Add Product</button>
+    </form>
+  {% endfor %}
+  <a href="{% url 'usercart' user.id%}">View Cart</a>
+{% endblock %}

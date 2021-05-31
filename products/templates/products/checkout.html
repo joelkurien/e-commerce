@@ -1,0 +1,15 @@
+{% extends 'products/layout.html' %}
+
+{% block title %}
+  User Cart
+{% endblock %}
+
+{% block content %}
+  {{ user.userName }}
+  <ul>
+    {% for items in checkout %}
+      <li>{{ items.productName }}</li>
+    {% endfor %}
+  </ul>
+  <a href="{% url 'userpage' user.id %}">Products Page</a>
+{% endblock %}

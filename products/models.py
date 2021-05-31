@@ -14,6 +14,6 @@ class User(models.Model):
     userName = models.CharField(max_length=64)
     userEmail = models.CharField(max_length=64)
     userPassword = models.CharField(max_length=20)
-
+    userProducts = models.ManyToManyField(Product, blank=True)
     def __str__(self):
-        return f"User {self.userName} {self.userEmail}"
+        return f"User {self.userName} {self.userEmail}\n Products: {self.userProducts}"
